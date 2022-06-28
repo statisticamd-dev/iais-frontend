@@ -22,6 +22,6 @@ jobs:
     - name: Docker Repository Configuration
       uses: macbre/push-to-ghcr@master
       with:
-        image_name: vasilebujor/iais-frontend
+        image_name: ${{ github.repository }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
         dockerfile: Dockerfile

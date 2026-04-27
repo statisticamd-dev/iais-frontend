@@ -13,11 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: actions/setup-node@v1
       with:
-        node-version: '14'
-    - run: npm install
+        node-version: '16'
+    #- run: npm install
+    - name: Install dependencies clean
+      run: |
+        rm -rf node_modules
+        npm cache clean --force
+        npm install --legacy-peer-deps
     - run: npm run build
     - name: Docker Repository Configuration
       uses: macbre/push-to-ghcr@master

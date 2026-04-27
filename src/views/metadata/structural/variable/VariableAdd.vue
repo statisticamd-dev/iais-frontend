@@ -116,7 +116,7 @@ export default {
       //.get("http://localhost:5300/variables/" + this.$route.params.id)
       //.get("http://iais.francecentral.cloudapp.azure.com:8080/api/v1/referential/agents")
       .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenVariables" +
+        "http://iais.statistica.md/api/v1/structural/OpenVariables" +
           this.$route.params.id
       )
       .then(response => (this.variables = response.data.variables))
@@ -164,7 +164,7 @@ export default {
     Submit() {
       axios
         .post(
-          "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/ClosedVariables/",
+          "http://iais.statistica.md/api/v1/structural/ClosedVariables/",
           this.form,
           axiosConfig
         )

@@ -23,7 +23,16 @@ jobs:
         rm -rf node_modules
         npm cache clean --force
         npm install --legacy-peer-deps
+    - name: Debug GitHub context
+      run: |
+        echo "github.repository=${{ github.repository }}"
+        echo "github.repository_owner=${{ github.repository_owner }}"
+        echo "github.ref=${{ github.ref }}"
+        echo "github.sha=${{ github.sha }}"
     - run: npm run build
+    - name: Check built API URL
+      run: |
+        grep -R "francecentral\|cloudapp\|10.28.10.13\|iais.statistica.md\|api/v1" dist || true
     - name: Docker Repository Configuration
       uses: macbre/push-to-ghcr@master
       with:
